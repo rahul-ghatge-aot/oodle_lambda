@@ -6,6 +6,7 @@ from io import BytesIO
 from PIL import Image
 from realesrgan import RealESRGANer
 from realesrgan.archs.srvgg_arch import SRVGGNetCompact
+from basicsr.archs.rrdbnet_arch import RRDBNet
 from basicsr.utils.download_util import load_file_from_url
 # from flask import Flask, request, jsonify
 import base64
@@ -53,13 +54,14 @@ def enhance_image(image_url, model, scale):
         img = Image.open(BytesIO(response.content)).convert("RGB")
         # ---------- New Code ----------
 
+        # model=SRVGGNetCompact(num_in_ch=3, num_out_ch=3, num_feat=64, num_conv=32, upscale=4, act_type='''relu'''),
         print("Loading RealESRGAN model...")
 
         enhancer = RealESRGANer(
             scale=scale,
             model_path=model,
             dni_weight=None,
-            model=SRVGGNetCompact(num_in_ch=3, num_out_ch=3, num_feat=64, num_conv=32, upscale=4, act_type='''relu'''),
+            RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32)
             tile=0,
             tile_pad=10,
             pre_pad=0,
