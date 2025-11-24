@@ -1,0 +1,17 @@
+# Python virtual environments
+venv/
+.venv/
+env/
+realesrgan-env/
+
+# Compiled packages
+__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+
+# Large ML models
+*.dll
+*.dylib
+*.so
