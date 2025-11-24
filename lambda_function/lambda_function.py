@@ -61,7 +61,7 @@ def enhance_image(image_url, model, scale):
             scale=scale,
             model_path=model,
             dni_weight=None,
-            RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32)
+            model=RRDBNet(num_in_ch=3, num_out_ch=3, num_feat=64, num_block=23, num_grow_ch=32)
             tile=0,
             tile_pad=10,
             pre_pad=0,
